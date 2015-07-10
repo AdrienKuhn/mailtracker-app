@@ -52,7 +52,9 @@
                                     <td>{{ $email->created_at }}</td>
                                     <td>{{ $email->updated_at }}</td>
                                     <td>
-                                        <a href="{{action('Admin\AdminEmailController@edit', $email->id)}}"><i class="fa fa-edit"></i></a>
+                                        <a href="{{action('Admin\AdminEmailController@edit', $email->id)}}" title="Edit email"><i class="fa fa-edit"></i></a>
+                                        <a href="{{action('Admin\AdminEmailController@show', $email->id)}}" title="Show email details"><i class="fa fa-eye"></i></a>
+                                        <a href="{{action('Admin\AdminEmailController@generate_signature', array($email->id, $email->uniqid))}}" title="Download signature"><i class="fa fa-download"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

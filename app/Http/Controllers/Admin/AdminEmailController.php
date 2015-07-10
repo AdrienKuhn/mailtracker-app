@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 
 class AdminEmailController extends Controller
@@ -63,7 +66,14 @@ class AdminEmailController extends Controller
      */
     public function show($id)
     {
-        //
+		$email = Email::where('user_id', Auth::id())->find($id);
+
+		// If email exist and related to current user
+		if($email) return View::make('admin.emails.show',array('email' => $email));
+
+		// Otherwise, return to index
+		return Redirect::route('admin.email.index');
+
     }
 
     /**
@@ -121,4 +131,25 @@ class AdminEmailController extends Controller
     {
         //
     }
+
+	/**
+	 * Generate file containing signature with tracking pixel
+	 * @param $id
+	 * @param $uniqid
+	 * @return mixed
+	 */
+	public function generate_signature($id, $uniqid){
+		$email = Email::where('user_id', Auth::id())->where('id',$id)->where('uniqid',$uniqid)->first();
+
+		// If email is found
+		if($email) {
+			// Generate file
+			$response = Response::make('<img src="'.asset(Config::get('mail_tracker.pixel_file')).'" height="1" width="1" />');
+			$response->header('Content-Type', 'application/octet-stream');
+			return $response;
+		}
+
+		// Otherwise, exit
+		abort(500, 'Email not found!');
+	}
 }

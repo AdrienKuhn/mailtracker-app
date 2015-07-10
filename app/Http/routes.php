@@ -29,5 +29,6 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function()
 
 	// Mails
 	Route::resource('email', 'Admin\AdminEmailController', array('except' => array('destroy')));
+	Route::get('email/{id}/{uniqid}', 'Admin\AdminEmailController@generate_signature', array('as' => 'Download Signature'));
 
 });
