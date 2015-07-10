@@ -26,7 +26,7 @@ class EmailTrackingController extends Controller
 		if($email) {
 			// Get data
 			$ip = $_SERVER['REMOTE_ADDR'];
-			$host = $_SERVER['HTTP_HOST'];
+			$host = gethostbyaddr($ip);
 			$user_agent = $_SERVER['HTTP_USER_AGENT'];
 
 			$country = @geoip_country_name_by_name($ip);
