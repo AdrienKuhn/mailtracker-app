@@ -38,7 +38,7 @@
                                     <th>#</th>
                                     <th>Uniqid</th>
                                     <th>Title</th>
-                                    <th>Opening number</th>
+                                    <th>Number of opening</th>
                                     <th>Last opened</th>
                                     <th>Created at</th>
                                     <th>Actions</th>
@@ -72,7 +72,7 @@
                                     <th>#</th>
                                     <th>Uniqid</th>
                                     <th>Title</th>
-                                    <th>Opening number</th>
+                                    <th>Number of opening</th>
                                     <th>Last opened</th>
                                     <th>Created at</th>
                                     <th>Actions</th>
