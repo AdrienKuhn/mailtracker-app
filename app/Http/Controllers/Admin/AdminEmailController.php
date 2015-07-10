@@ -24,7 +24,7 @@ class AdminEmailController extends Controller
      */
     public function index()
     {
-		$emails = Email::where('user_id', Auth::id())->get();
+		$emails = Email::where('user_id', Auth::id())->with('email_trackings')->get();
 		return View::make('admin.emails.index',array('emails' => $emails));
     }
 

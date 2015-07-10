@@ -38,8 +38,9 @@
                                     <th>#</th>
                                     <th>Uniqid</th>
                                     <th>Title</th>
+                                    <th>Opening number</th>
+                                    <th>Last opened</th>
                                     <th>Created at</th>
-                                    <th>Updated at</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -49,8 +50,15 @@
                                     <td>{{ $email->id }}</td>
                                     <td>{{ $email->uniqid }}</td>
                                     <td>{{ $email->title }}</td>
+                                    <td>{{ $email->email_trackings->count() }}</td>
+                                    <td>
+                                        @if($email->email_trackings->count() > 1)
+                                            {{ $email->email_trackings->last()->created_at }}
+                                        @else
+                                            Never opened
+                                        @endif
+                                    </td>
                                     <td>{{ $email->created_at }}</td>
-                                    <td>{{ $email->updated_at }}</td>
                                     <td>
                                         <a href="{{action('Admin\AdminEmailController@edit', $email->id)}}" title="Edit email"><i class="fa fa-edit"></i></a>
                                         <a href="{{action('Admin\AdminEmailController@show', $email->id)}}" title="Show email details"><i class="fa fa-eye"></i></a>
@@ -64,8 +72,9 @@
                                     <th>#</th>
                                     <th>Uniqid</th>
                                     <th>Title</th>
+                                    <th>Opening number</th>
+                                    <th>Last opened</th>
                                     <th>Created at</th>
-                                    <th>Updated at</th>
                                     <th>Actions</th>
                                 </tr>
                             </tfoot>
