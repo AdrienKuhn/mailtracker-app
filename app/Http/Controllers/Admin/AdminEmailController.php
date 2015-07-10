@@ -144,7 +144,7 @@ class AdminEmailController extends Controller
 		// If email is found
 		if($email) {
 			// Generate file
-			$response = Response::make('<img src="'.asset(Config::get('mail_tracker.pixel_file')).'" height="1" width="1" />');
+			$response = Response::make('<img src="'.action('EmailTrackingController@track',array($id, $uniqid)).'" height="1" width="1" />');
 			$response->header('Content-Type', 'application/octet-stream');
 			return $response;
 		}
