@@ -109,9 +109,7 @@ class AdminEmailController extends Controller
 			$validator = Email::validate($inputs);
 
 			if ($validator->passes()) {
-
-				if (!$email)
-					$email->title = $inputs['title'];
+				$email->title = $inputs['title'];
 				$email->save();
 				return Redirect::route('admin.email.index');
 			} else return Redirect::back()->withInput()->withErrors($validator);
