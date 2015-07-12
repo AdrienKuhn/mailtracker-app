@@ -23,7 +23,9 @@ class Email extends Model
 	 */
 	public function email_trackings()
 	{
-		return $this->hasMany(EmailTracking::class);
+		return $this->hasMany(EmailTracking::class)
+				->where('ip', '!=', env('IGNORE_IP', 'null'));
+				// Ignore defined IP in .env file
 	}
 
 	/**
