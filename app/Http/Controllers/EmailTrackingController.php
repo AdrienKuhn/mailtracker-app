@@ -51,7 +51,7 @@ class EmailTrackingController extends Controller
 
 				// Send pushbullet notification
 				$user = $email->user;
-				if($user->pushbullet) {
+				if($user->pushbullet && $ip != env('IGNORE_IP', 'null')) {
 					$pushbullet = new PHPushbullet($user->pushbullet_api_key);
 					$message = 'Your email "' . $email->title . '" has been read by '.$ip.' ('.$host.' - '.$country.').';
 					$pushbullet->device($user->pushbullet_device)->note($email->title, $message);
