@@ -27,6 +27,10 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function()
 	// Dashboard
 	// Route::get('/', 'Admin\AdminDashboardController@showDashboard', array('as' => 'dashboard'));
 
+	// Profile
+	Route::get('/profile/edit', 'Admin\AdminUserController@edit', array('as' => 'edit_profile'));
+	Route::put('/profile/edit', 'Admin\AdminUserController@update', array('as' => 'update_profile'));
+
 	// Mails
 	Route::resource('email', 'Admin\AdminEmailController', array('except' => array('destroy')));
 	Route::get('email/{id}/{uniqid}', 'Admin\AdminEmailController@generate_signature', array('as' => 'Download Signature'));

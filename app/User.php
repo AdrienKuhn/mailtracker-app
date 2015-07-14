@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Facades\Validator;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -41,5 +42,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function emails()
 	{
 		return $this->hasMany(Email::class);
+	}
+
+
+	/**
+	 * User Validator
+	 * @param $inputs
+	 * @return mixed
+	 */
+	public static function validate($inputs){
+		$validator = Validator::make($inputs, array(
+			'name' => 'required|max:255',
+			'email'=> 'email|required',
+			'password' => 'min:8|confirmed'
+		));
+
+		return $validator;
 	}
 }

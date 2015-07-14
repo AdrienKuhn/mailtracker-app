@@ -26,10 +26,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{ action('Admin\AdminUserController@edit') }}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{url('/auth/logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{ url('/auth/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
