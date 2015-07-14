@@ -62,10 +62,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		{
 			return $input->pushbullet;
 		});
-		$validator->sometimes('pushbullet_device', 'required', function($input)
-		{
-			return $input->pushbullet;
-		});
 
 		return $validator;
 	}

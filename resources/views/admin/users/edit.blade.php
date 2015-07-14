@@ -26,21 +26,27 @@
                     <div class="box-body">
                         {{-- Show errors if any --}}
                         @if ($errors->any())
+                        <div class="callout callout-warning">
+                            <h4>Errors</h4>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        @if (Session::has('pushbullet_error'))
                             <div class="callout callout-warning">
-                                <h4>Errors</h4>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
-                                    @endforeach
-                                </ul>
+                                <h4>Pushbullet</h4>
+                                <p>{{ Session::get('pushbullet_error') }}</p>
                             </div>
-                            @endif
+                        @endif
 
-                            <!-- form start -->
-                            {!! Form::model($user, array('action' => array('Admin\AdminUserController@update'), 'method' => 'PUT')) !!}
-                                @include('admin.users._form_inputs')
-                            {!! Form::close() !!}
-                            <!-- form close -->
+                        <!-- form start -->
+                        {!! Form::model($user, array('action' => array('Admin\AdminUserController@update'), 'method' => 'PUT')) !!}
+                            @include('admin.users._form_inputs')
+                        {!! Form::close() !!}
+                        <!-- form close -->
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div><!-- /.col -->
