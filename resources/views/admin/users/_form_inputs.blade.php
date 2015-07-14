@@ -18,7 +18,7 @@
         @if(isset($devices))
         <div class="form-group">
             {!! Form::label('pushbullet_device', 'Pushbullet Device') !!}
-            {!! Form::select('pushbullet_device', $devices) !!}
+            {!! Form::select('pushbullet_device', $devices, null, array('class' => 'form-control')) !!}
         </div>
         @endif
         <div class="form-group">
