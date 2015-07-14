@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use PHPushbullet\PHPushbullet;
 
 class EmailTrackingController extends Controller
 {
@@ -48,6 +49,13 @@ class EmailTrackingController extends Controller
 				$tracking->save();
 				$email->email_trackings()->save($tracking); // Attach tracking to email
 
+				// Send pushbullet notification
+				$user = $email->user;
+				if($user->pushbullet) {
+					$pushbullet = new PHPushbullet($user->pushbullet_api_key);
+					$message = 'Your email "' . $email->title . '" has been read by '.$ip.' ('.$country.').';
+					$pushbullet->device($user->pushbullet_device)->note($email->title, $message);
+				}
 
 				// Return pixel
 				$response = Response::make(File::get(Config::get('mail_tracker.pixel_file')));

@@ -50,6 +50,10 @@ class AdminUserController extends Controller
 		if($validator->passes()){
 			$user->name = $inputs['name'];
 			$user->email = $inputs['email'];
+			if(isset($inputs['pushbullet'])) $user->pushbullet = true;
+			else $user->pushbullet = false;
+			$user->pushbullet_api_key = $inputs['pushbullet_api_key'];
+			$user->pushbullet_device = $inputs['pushbullet_device'];
 			if($inputs['password']) $user->password = Hash::make($inputs['password']);
 			$user->save();
 			return Redirect::action('Admin\AdminUserController@edit');

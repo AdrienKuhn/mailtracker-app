@@ -57,6 +57,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			'password' => 'min:8|confirmed'
 		));
 
+		// If pushbullet checked, API key and device required
+		$validator->sometimes('pushbullet_api_key', 'required', function($input)
+		{
+			return $input->pushbullet;
+		});
+		$validator->sometimes('pushbullet_device', 'required', function($input)
+		{
+			return $input->pushbullet;
+		});
+
 		return $validator;
 	}
 }
