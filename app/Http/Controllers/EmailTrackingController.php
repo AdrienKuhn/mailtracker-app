@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MailTracker\Http\Controllers;
 
-use App\Email;
-use App\EmailTracking;
+use MailTracker\Email;
+use MailTracker\EmailTracking;
 
-use App\Http\Requests;
+use MailTracker\Http\Requests;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;

@@ -140,9 +140,9 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        MailTracker\Providers\AppServiceProvider::class,
+        MailTracker\Providers\EventServiceProvider::class,
+        MailTracker\Providers\RouteServiceProvider::class,
 
 		/*
 		 * Custom Providers

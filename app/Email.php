@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MailTracker;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;

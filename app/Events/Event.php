@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace MailTracker\Events;
 
 abstract class Event
 {
