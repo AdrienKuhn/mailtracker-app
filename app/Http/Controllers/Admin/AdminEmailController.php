@@ -127,7 +127,9 @@ class AdminEmailController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$email = Email::where('user_id', Auth::id())->find($id);
+		if($email) $email->delete();
+		return Redirect::route('admin.email.index');
     }
 
 	/**

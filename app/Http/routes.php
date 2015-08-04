@@ -32,7 +32,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function()
 	Route::put('/profile/edit', 'Admin\AdminUserController@update', array('as' => 'update_profile'));
 
 	// Mails
-	Route::resource('email', 'Admin\AdminEmailController', array('except' => array('destroy')));
+	Route::resource('email', 'Admin\AdminEmailController');
 	Route::get('email/{id}/{uniqid}', 'Admin\AdminEmailController@generate_signature', array('as' => 'Download Signature'));
 
 });

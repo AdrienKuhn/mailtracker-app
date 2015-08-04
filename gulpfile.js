@@ -14,6 +14,7 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.less([
         'admin/AdminLTE.less',
+        'admin/custom.less',
         'admin/skins/skin-black.less'
     ], 'public/css/admin.css');
 
