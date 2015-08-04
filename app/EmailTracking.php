@@ -3,10 +3,20 @@
 namespace MailTracker;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 
 class EmailTracking extends Model
 {
+
+	use SoftDeletes;
+
+	/**
+	 * The attributes that should be mutated to dates.
+	 *
+	 * @var array
+	 */
+	protected $dates = ['deleted_at'];
 
 	/**
 	 * Email relationship
@@ -14,7 +24,7 @@ class EmailTracking extends Model
 	 */
 	public function email()
 	{
-		return $this->hasOne(Email::class);
+		return $this->belongsTo(Email::class);
 	}
 
 

@@ -40,6 +40,7 @@
                                     <th>Host</th>
                                     <th>User Agent</th>
                                     <th>Country</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,6 +52,11 @@
                                     <td>{{ $tracking->host }}</td>
                                     <td>{{ $tracking->user_agent }}</td>
                                     <td>{{ $tracking->country }}</td>
+                                    <td>
+                                        {!! Form::open(array('action' => array('Admin\AdminEmailTrackingController@destroy', $tracking->id), 'method' => 'delete', 'id' => 'delete_form', 'onSubmit' => "return confirm('Are you sure you wish to delete?');")) !!}
+                                            <button type="submit" class="btn btn-link"><i class="fa fa-trash"></i></button>
+                                        {!! Form::close() !!}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -62,6 +68,7 @@
                                     <th>Host</th>
                                     <th>User Agent</th>
                                     <th>Country</th>
+                                    <th>Actions</th>
                                 </tr>
                             </tfoot>
                         </table>

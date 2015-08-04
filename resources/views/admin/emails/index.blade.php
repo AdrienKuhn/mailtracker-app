@@ -63,7 +63,7 @@
                                         <a href="{{action('Admin\AdminEmailController@edit', $email->id)}}" title="Edit email"><i class="fa fa-edit"></i></a>
                                         <a href="{{action('Admin\AdminEmailController@show', $email->id)}}" title="Show email details"><i class="fa fa-eye"></i></a>
                                         <a href="{{action('Admin\AdminEmailController@generate_signature', array($email->id, $email->uniqid))}}" title="Download signature"><i class="fa fa-download"></i></a>
-                                        {!! Form::open(array('action' => array('Admin\AdminEmailController@destroy', $email->id), 'method' => 'delete', 'id' => 'emails_delete_form', 'onSubmit' => "return confirm('Are you sure you wish to delete?');")) !!}
+                                        {!! Form::open(array('action' => array('Admin\AdminEmailController@destroy', $email->id), 'method' => 'delete', 'id' => 'delete_form', 'onSubmit' => "return confirm('Are you sure you wish to delete?');")) !!}
                                             <button type="submit" class="btn btn-link"><i class="fa fa-trash"></i></button>
                                         {!! Form::close() !!}
                                     </td>

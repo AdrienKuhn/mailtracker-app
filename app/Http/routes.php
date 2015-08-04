@@ -35,4 +35,6 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function()
 	Route::resource('email', 'Admin\AdminEmailController');
 	Route::get('email/{id}/{uniqid}', 'Admin\AdminEmailController@generate_signature', array('as' => 'Download Signature'));
 
+	// Mail trackings
+	Route::resource('tracking', 'Admin\AdminEmailTrackingController', array('only' => array('destroy')));
 });
