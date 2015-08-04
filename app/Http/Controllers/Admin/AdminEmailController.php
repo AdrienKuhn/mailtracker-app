@@ -66,7 +66,7 @@ class AdminEmailController extends Controller
      */
     public function show($id)
     {
-		$email = Email::where('user_id', Auth::id())->find($id);
+		$email = Email::with('email_trackings')->where('user_id', Auth::id())->find($id);
 
 		// If email exist and related to current user
 		if($email) return View::make('admin.emails.show',array('email' => $email));

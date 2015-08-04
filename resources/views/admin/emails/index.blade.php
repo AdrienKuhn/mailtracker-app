@@ -52,7 +52,7 @@
                                     <td>{{ $email->title }}</td>
                                     <td>{{ $email->email_trackings->count() }}</td>
                                     <td>
-                                        @if($email->email_trackings->count() > 1)
+                                        @if($email->email_trackings->count() >= 1)
                                             {{ $email->email_trackings->last()->created_at }}
                                         @else
                                             Never opened
