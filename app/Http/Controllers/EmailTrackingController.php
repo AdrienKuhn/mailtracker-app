@@ -68,6 +68,6 @@ class EmailTrackingController extends Controller
 		}
 
 		// Otherwise, exit
-		abort(500, 'Email not found!');
+		abort(404, 'Email not found!');
 	}
 }
