@@ -4,11 +4,6 @@ use Illuminate\Support\Facades\Auth;
 use MailTracker\Email;
 use MailTracker\Http\Requests;
 use MailTracker\Http\Controllers\Controller;
-
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 class AdminDashboardController extends Controller {
