@@ -10,7 +10,7 @@
             <small>new</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{action('Admin\AdminDashboardController@showDashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="{{action('Admin\AdminEmailController@index')}}">Emails</a></li>
             <li class="active">Add new Email</li>
         </ol>

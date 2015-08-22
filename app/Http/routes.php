@@ -25,7 +25,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function()
 {
 
 	// Dashboard
-	// Route::get('/', 'Admin\AdminDashboardController@showDashboard', array('as' => 'dashboard'));
+	Route::get('/', 'Admin\AdminDashboardController@showDashboard', array('as' => 'dashboard'));
 
 	// Profile
 	Route::get('/profile/edit', 'Admin\AdminUserController@edit', array('as' => 'edit_profile'));

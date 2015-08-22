@@ -16,7 +16,7 @@
             <small>all Emails</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{action('Admin\AdminDashboardController@showDashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="#">Emails</a></li>
             <li class="active">List</li>
         </ol>

@@ -17,7 +17,7 @@
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li @if(Request::is('admin')) class="active" @endif>
-                <a href="#">
+                <a href="{{action('Admin\AdminDashboardController@showDashboard')}}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
