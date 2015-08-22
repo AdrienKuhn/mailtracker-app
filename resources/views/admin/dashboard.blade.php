@@ -84,9 +84,7 @@
                             <thead>
                             <tr>
                                 <th>Read at</th>
-                                <th>IP</th>
                                 <th>Host</th>
-                                <th>User Agent</th>
                                 <th>Country</th>
                             </tr>
                             </thead>
@@ -94,9 +92,7 @@
                             @foreach($last_email->email_trackings as $tracking)
                                 <tr>
                                     <td>{{ $tracking->created_at }}</td>
-                                    <td>{{ $tracking->ip }}</td>
                                     <td>{{ $tracking->host }}</td>
-                                    <td>{{ $tracking->user_agent }}</td>
                                     <td>{{ $tracking->country }}</td>
                                 </tr>
                             @endforeach
@@ -104,9 +100,7 @@
                             <tfoot>
                             <tr>
                                 <th>Read at</th>
-                                <th>IP</th>
                                 <th>Host</th>
-                                <th>User Agent</th>
                                 <th>Country</th>
                             </tr>
                             </tfoot>
