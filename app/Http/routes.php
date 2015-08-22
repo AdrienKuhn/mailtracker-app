@@ -29,6 +29,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function()
 
 	// Profile
 	Route::get('/profile/edit', 'Admin\AdminUserController@edit', array('as' => 'edit_profile'));
+	Route::get('/profile/edit/test-notification', 'Admin\AdminUserController@sendTestNotification', array('as' => 'test_notification'));
 	Route::put('/profile/edit', 'Admin\AdminUserController@update', array('as' => 'update_profile'));
 
 	// Mails

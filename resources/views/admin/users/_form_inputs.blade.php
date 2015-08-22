@@ -32,5 +32,6 @@
 
     </div><!-- /.box-body -->
     <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{{action('Admin\AdminUserController@sendTestNotification')}}" class="btn btn-info">Send test notification</a>
     </div>

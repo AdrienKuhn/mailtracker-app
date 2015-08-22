@@ -105,4 +105,27 @@ class AdminUserController extends Controller
 			return Redirect::back()->withInput()->withErrors($validator);
 
     }
+
+	/**
+	 * Send a test notification
+	 *
+	 * @return Redirect
+	 */
+	public function sendTestNotification()
+	{
+		$user = User::find(Auth::id());
+
+		// If user found
+		if($user){
+			if($user->pushbullet_api_key && $user->pushbullet_device){ // If api key and device are defined
+				$pushbullet = new PHPushbullet($user->pushbullet_api_key);
+				$message = 'This is a test notification from Mail Tracker';
+				$pushbullet->device($user->pushbullet_device)->note('Mail Tracker', $message);
+				Session::flash('pushbullet_info', 'Test notification sent to '.$user->pushbullet_device.'!');
+			}else Session::flash('pushbullet_error', 'Please verify Pushbullet settings.');
+		}
+
+		// Return to user profile
+		return Redirect::action('Admin\AdminUserController@edit');
+	}
 }

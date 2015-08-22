@@ -41,6 +41,12 @@
                                 <p>{{ Session::get('pushbullet_error') }}</p>
                             </div>
                         @endif
+                        @if (Session::has('pushbullet_info'))
+                            <div class="callout callout-info">
+                                <h4>Pushbullet</h4>
+                                <p>{{ Session::get('pushbullet_info') }}</p>
+                            </div>
+                        @endif
 
                         <!-- form start -->
                         {!! Form::model($user, array('action' => array('Admin\AdminUserController@update'), 'method' => 'PUT')) !!}
