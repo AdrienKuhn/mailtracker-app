@@ -21,10 +21,11 @@ class AdminDashboardController extends Controller {
 	public function showDashboard()
 	{
 		// Statistics
-		$sent_email_nb = 10;
-		$active_email_nb = 5;
-		$last_email_read_nb = 50;
+		$sent_email_nb = Email::where('user_id', Auth::id())->withTrashed()->count();
+		$active_email_nb = Email::where('user_id', Auth::id())->count();
 		$last_email = Email::with('email_trackings')->where('user_id', Auth::id())->get()->last();
+		$last_email_read_nb = $last_email->email_trackings->count();
+
 		return View::make('admin.dashboard',array(
 												'sent_email_nb' => $sent_email_nb,
 												'active_email_nb' => $active_email_nb,
