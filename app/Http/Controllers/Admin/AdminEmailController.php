@@ -28,6 +28,17 @@ class AdminEmailController extends Controller
 		return View::make('admin.emails.index',array('emails' => $emails));
     }
 
+	/**
+	 * Display a listing of the trashed resource.
+	 *
+	 * @return Response
+	 */
+	public function indexTrashed()
+	{
+		$emails = Email::where('user_id', Auth::id())->with('email_trackings')->onlyTrashed()->get();
+		return View::make('admin.emails.indexTrashed',array('emails' => $emails));
+	}
+
     /**
      * Show the form for creating a new resource.
      *

@@ -30,6 +30,7 @@
                 <ul class="treeview-menu">
                     <li @if(Request::is('admin/email')) class="active" @endif><a href="{{action('Admin\AdminEmailController@index')}}"><i class="fa fa-circle-o"></i> List Emails</a></li>
                     <li @if(Request::is('admin/email/create')) class="active" @endif><a href="{{action('Admin\AdminEmailController@create')}}"><i class="fa fa-circle-o"></i> Add Email</a></li>
+                    <li @if(Request::is('admin/email/trashed')) class="active" @endif><a href="{{action('Admin\AdminEmailController@indexTrashed')}}"><i class="fa fa-circle-o"></i> Deleted emails</a></li>
                 </ul>
             </li>
         </ul>
