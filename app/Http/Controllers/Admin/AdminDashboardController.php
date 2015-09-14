@@ -19,7 +19,8 @@ class AdminDashboardController extends Controller {
 		$sent_email_nb = Email::where('user_id', Auth::id())->withTrashed()->count();
 		$active_email_nb = Email::where('user_id', Auth::id())->count();
 		$last_email = Email::with('email_trackings')->where('user_id', Auth::id())->get()->last();
-		$last_email_read_nb = $last_email->email_trackings->count();
+		if($last_email) $last_email_read_nb = $last_email->email_trackings->count();
+		else $last_email_read_nb = 0;
 
 		return View::make('admin.dashboard',array(
 												'sent_email_nb' => $sent_email_nb,
