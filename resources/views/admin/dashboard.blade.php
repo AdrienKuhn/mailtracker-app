@@ -55,7 +55,11 @@
                     <div class="icon">
                         <i class="ion ion-eye"></i>
                     </div>
+                    @if($last_email)
                     <a href="{{action('Admin\AdminEmailController@show', $last_email->id)}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    @else
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    @endif
                 </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -72,6 +76,7 @@
                 </div>
             </div><!-- ./col -->
         </div><!-- /.row -->
+        @if($last_email)
         <!-- Main row -->
         <div class="row">
             <div class="col-md-12">
@@ -109,5 +114,6 @@
                 </div><!-- /.box -->
             </div>
         </div><!-- /.row (main row) -->
+        @endif
     </section><!-- /.content -->
 @stop
