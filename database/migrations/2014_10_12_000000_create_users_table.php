@@ -20,7 +20,12 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->integer('role')->unsigned()->default(0); # 0 = user, 100 = admin
+            $table->boolean('pushbullet')->default(false);
+            $table->string('pushbullet_api_key')->nullable();
+            $table->string('pushbullet_device')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
