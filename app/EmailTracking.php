@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Validator;
 
 class EmailTracking extends Model
 {
@@ -36,7 +37,7 @@ class EmailTracking extends Model
             'ip' 			=> 'required|max:45',
             'host' 			=> 'string',
             'user_agent' 	=> 'string',
-            'country' 		=> 'string'
+            'country' 		=> 'string|nullable'
         ));
 
         return $validator;
