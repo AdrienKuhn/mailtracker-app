@@ -27,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Emails relationship
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function emails()
+    {
+        return $this->hasMany(Email::class);
+    }
 }
