@@ -39,16 +39,23 @@ class CreateEmail extends Command
      */
     public function handle()
     {
-        $email = new Email();
-        $email->subject = $this->argument('subject');
-        $email->uniqid = uniqid();
+        $validator = Email::validate(array(
+            'subject' => $this->argument('subject'),
+        ));
 
-        // Default user
-        $user = User::find(1);
+        if($validator->passes()) {
+            $email = new Email();
+            $email->subject = $this->argument('subject');
+            $email->uniqid = uniqid();
 
+            // Default user
+            $user = User::find(1);
 
-        $email = $user->emails()->save($email); // Attach user
+            $email = $user->emails()->save($email); // Attach user
 
-        $this->info("Email $email->id successfully created.");
+            $this->info("Email $email->id successfully created.");
+        } else {
+            $this->error('Error during email validation');
+        }
     }
 }
