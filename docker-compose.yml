@@ -16,6 +16,7 @@ services:
     image: krewh/mailtracker:develop
     volumes:
       - .:/var/www/html
+      - ./docker/local/php/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - mariadb
     networks:
