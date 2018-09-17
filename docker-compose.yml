@@ -6,7 +6,7 @@ services:
     - "8080:80"
     volumes:
     - .:/var/www/html
-    - ./docker/local/web/sites/dev.conf:/etc/nginx/conf.d/default.conf
+    - ./docker/config/nginx/dev.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - app
     networks:
@@ -16,7 +16,7 @@ services:
     image: krewh/mailtracker:develop
     volumes:
       - .:/var/www/html
-      - ./docker/local/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - mariadb
     networks:
