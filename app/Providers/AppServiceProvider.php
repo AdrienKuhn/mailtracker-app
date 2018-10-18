@@ -1,6 +1,6 @@
 <?php
 
-namespace MailTracker\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

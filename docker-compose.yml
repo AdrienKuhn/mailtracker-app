@@ -1,0 +1,59 @@
+version: '3'
+services:
+  web:
+    image: krewh/hardened-nginx
+    ports:
+    - "8080:80"
+    volumes:
+    - .:/var/www/html
+    - ./docker/config/nginx/dev.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+    - internal
+
+  app:
+    image: krewh/mailtracker:develop
+    volumes:
+      - .:/var/www/html
+      - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - mariadb
+    networks:
+      internal:
+        aliases:
+          - php
+
+  mariadb:
+    image: mariadb:10
+    ports:
+      - "33060:3306"
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      internal:
+        aliases:
+          - mariadb
+
+  composer:
+    restart: 'no'
+    image: composer
+    depends_on:
+      - mariadb
+    command: install
+    volumes:
+      - .:/app
+    networks:
+        - internal
+
+volumes:
+  mariadb:
+
+networks:
+  internal:
+    driver: bridge
